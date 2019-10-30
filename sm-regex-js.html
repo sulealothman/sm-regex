@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<!--
+		/**
+		 *
+		 * Author Suleiman Al-Othman (@sulealothman)
+		 * Regular Expression of Social Media Accounts
+		 * Matched for username Github, Twitter, Instagram and Snapchat
+		 *
+		 **/
+	 -->
+	<body>
+		<input onkeyup="check_pattern(this)" type="text" id="txt" placeholder="example" />
+		<p id="result"></p>
+
+		<script>
+			var patterns = {
+				"Github" : /^(?!.*\-\-|.*\-$|.*\_)[a-zA-Z0-9][\w-]+[a-zA-Z0-9]{0,39}$/i,
+				"Twitter" : /^[A-z0-9]{0,15}$/i,
+				"Instagram" : /^(?!.*\.\.|.*\.$)[A-z0-9][\w.]+[A-z0-9]{0,30}$/i,
+				"Snapchat": /^(?!.*\.\.|.*\_\_|.*\-\-)(?!.*\.$|.*\_$|.*\-$)(?!.*\.\-|.*\-\.|.*\-\_|.*\_\-|.*\.\_|.*\_\.)[a-zA-Z]+[\w.-][0-9A-z]{0,15}$/i,
+			};
+			function check_pattern(text) {
+			  var resultId = document.getElementById("result");
+			  var isMatched = "Yes, is matched <br />";
+			  var isNotMatched = "No, is not matched <br />";
+			  var result = "";
+			  for (var item in patterns) {
+			  	if(text.value.match(patterns[item]))
+			  		result += item + " : " + isMatched;
+			  	else
+			  		result += item + " : " + isNotMatched;
+			  }
+				resultId.innerHTML = result;
+			}
+		</script>
+	</body>
+</html>
